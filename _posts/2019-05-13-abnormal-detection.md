@@ -1,4 +1,14 @@
-
+---
+layout:     post
+title:      异常检测算法:概率分布法+Isolation Forest
+subtitle:   异常检测算法
+date:       2018-06-05
+author:     马骋
+header-img: img/post-bg-cook.jpg
+catalog: true
+tags:
+    - 机器学习
+---
 
 如果你有了一大堆数据，想找到异常的数据记录，异常检测就是解决这个问题的。
 在工业数据中，异常意味着故障、不合格；
