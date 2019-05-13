@@ -33,3 +33,9 @@ Temporary Items
 
 # debug file
 _site
+
+# ipynb files
+*/__pycache__
+.ipynb_checkpoints
+
+
