@@ -1,5 +1,14 @@
-
-[toc]
+---
+layout:     post
+title:      TEC支付风险异常识别比赛:数据预处理与特征选择
+subtitle:   数据处理与特征工程
+date:       2018-06-05
+author:     马骋
+header-img: img/post-bg-coffes.jpg
+catalog: true
+tags:
+    - 机器学习
+---
 
 ---
 
