@@ -4,7 +4,7 @@ title:      异常检测算法:概率分布法+Isolation Forest
 subtitle:   异常检测算法
 date:       2018-06-05
 author:     马骋
-header-img: img/post-bg-coffee.jpg
+header-img: img/post-bg-coffee.jpeg
 catalog: true
 tags:
     - 机器学习
