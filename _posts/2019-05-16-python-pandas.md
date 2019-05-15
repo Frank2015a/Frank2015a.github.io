@@ -106,7 +106,8 @@ pd.value_counts(y_train)
 Name: label, dtype: int64
 ```
 
-- groupby
+- groupby 
+
 ```
 f_10w.groupby(by = 'label')['id'].count()
 
@@ -115,7 +116,6 @@ label
  0    98335
  1     1185
 ```
-输出清晰，指定对'id'统计，不用对其他列操作。
 
 - Counter
 ```
