@@ -18,13 +18,13 @@ tags:
 ## 获取访问元素
 
 - 获取df行列数
-```
+```c
 df.shape        # get both
 len(df.index)   # get col
 ```
 
 - 获取column
-```
+```c
 s = df['loan_amnt']     # Series
 s = df.loc[:,'loan_amnt']
 s2 = df[['loan_amnt']]  # DataFrame
@@ -39,7 +39,7 @@ df.iloc[0:2]  # 等价于df.iloc[0:2,:]
 
 - 获取单元格
 iloc的colname要用下标，loc支持字符串名。
-```
+```c
 df.iloc[0:2,1]
 df.loc[0:1,'loan_amnt']
 ```
@@ -68,7 +68,7 @@ frame3.index.name = 'year'; frame3.columns.name = 'state'
 
 - drop列
 一般用于清除无效特征，axis=1即drop列。
-```
+```c
 frame2.drop('east', axis=1)
 frame2.drop(['east','west'], axis=1)
 del frame2['east']
@@ -99,7 +99,7 @@ y_train_bal = pd.concat([y_pos, y_neg])  # seriers
 最有效的方法：
 
 - value_counts
-```
+```c
 df.fe1.value_counts()
 pd.value_counts(y_train)
 0    880095
@@ -108,7 +108,7 @@ Name: label, dtype: int64
 ```
 
 - groupby
-```
+```c
 f_10w.groupby(by = 'label')['id'].count()
 
 label
@@ -119,7 +119,7 @@ label
 输出清晰，指定对'id'统计，不用对其他列操作。
 
 - Counter
-```
+```c
 from collections import Counter
 Counter(y)
 Counter({2: 4674, 1: 262, 0: 64})
@@ -131,7 +131,7 @@ Counter({2: 4674, 1: 262, 0: 64})
 
 用于确认数值型特征和非数值型特征的数量，以便后续的特征工程：
 
-```
+```c
 df_train.dtypes.value_counts()
 # output
 dtypes of train data:
@@ -144,7 +144,7 @@ dtype: int64
 
 通过df的info函数，也能得到类型统计：
 
-```
+```c
 df_train.info()
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 307511 entries, 0 to 307510
@@ -158,7 +158,7 @@ memory usage: 286.2+ MB
 
 可能筛选出数值型特征和非数值型的特征分别处理：
 
-```
+```c
 df.select_dtypes(include='object').columns
 df.select_dtypes(include=['int64', 'float64']).columns
 ```
@@ -204,7 +204,7 @@ df.loan_status.map({'Fully Paid':0, 'Charged Off':1})
 
 应用于df每个元素，不分行列：
 
-```
+```c
 format = lambda x: '%.2f' % x
 frame.applymap(format)
 frame[0:1].applymap(format)
@@ -221,7 +221,7 @@ series不能直接用applymap，要用map。
 - bool转int
 - str转cate
 
-```python
+```c
 def convert_types(df, print_info = False):
     original_memory = df.memory_usage().sum()
     # Iterate through each column
@@ -273,7 +273,7 @@ describe函数，排除df中的nan后，给出特征列的统计信息：
 
 直接调用describe，默认值统计数值型特征。直接统计的结果，col与原df一致，在特征数量很多的时候，并不方便查看，转置后更方便。
 
-```
+```c
 df_desc = df_train.describe().T
 df_desc.head()
 ```
@@ -290,7 +290,7 @@ df_desc.head()
 
 如果不需要25%和75%的数值，可以在percentile中设置：
 
-```
+```c
 df_desc = df_train.describe(percentiles=[0.5]).T
 df_desc['null_ratio'] = 1 - df_desc['count'] / df_train.shape[0]
 df_desc.sort_values(by = 'null_ratio', inplace=True)
@@ -310,7 +310,7 @@ df_desc.sort_values(by = 'null_ratio', inplace=True)
 
 要统计字符特征，需显式指定类型：
 
-```
+```c
 df_desc_obj = df_train.describe(include=[np.object]).T
 # 统计频繁项的占比
 df_desc_obj['freq_ratio'] = df_desc_obj['freq'] / df_desc_obj['count']
@@ -335,7 +335,7 @@ info给出df的summary信息：
 - 简洁版
 给出dtypes的统计。
 
-```
+```c
 df_train.info()
 
 RangeIndex: 307511 entries, 0 to 307510
@@ -347,7 +347,7 @@ memory usage: 286.2+ MB
 - 详细版
 除了简洁版的信息，还可以给出各个特征的数据类型，null统计。
 
-```
+```c
 df_train.info(verbose=True,null_counts=True)
 # verbose summary
 SK_ID_CURR                      307511 non-null int64
@@ -361,7 +361,7 @@ CODE_GENDER                     307511 non-null object
 
 ## 相关性分析
 
-```
+```c
 returns['MSFT'].corr(returns['IBM'])  # 列vs列
 returns['MSFT'].cov(returns['IBM'])
 returns.corr()  # df vs self，相关性矩阵
@@ -376,14 +376,14 @@ returns.cov()
 
 基本实现：
 
-```
+```c
 df_null = pd.DataFrame(df.isnull().sum() / df.shape[0])
 df_null.sort_values(by=0, ascending=False).head(30)
 ```
 
 函数实现：
 
-```python
+```c
 def df_null_stat(df, thres_null=0.5):
     df_null = pd.DataFrame(df.isnull().sum() / df.shape[0])
     df_null.rename(columns={0:'null_ratio'}, inplace=True);
