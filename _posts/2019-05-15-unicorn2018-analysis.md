@@ -1,12 +1,15 @@
+---
+layout:     post
+title:      [数据挖掘][胡润2018独角兽指数分析]
+subtitle:   独角兽与行业城市的兴起
+date:       2018-06-05
+author:     马骋
+header-img: img/post-bg-coffee.jpeg
+catalog: true
+tags:
+    - 数据挖掘 
+---
 
-
-[数据挖掘][案例分析][胡润独角兽指数2018]
-
-
-
-[toc]
-
---- 
 
 数据来源于《2018胡润大中华区独角兽指数》：
 http://www.hurun.net/CN/Article/Details?num=EF8A8559DC86
