@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      [数据挖掘][胡润2018独角兽指数分析]
+title:      数据挖掘|胡润2018独角兽指数分析
 subtitle:   独角兽与行业城市的兴起
 date:       2018-06-05
 author:     马骋
