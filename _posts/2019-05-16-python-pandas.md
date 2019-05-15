@@ -18,7 +18,6 @@ tags:
 ## 获取访问元素
 
 - 获取df行列数
-
 ```
 df.shape        # get both
 len(df.index)   # get col
@@ -46,7 +45,6 @@ df.loc[0:1,'loan_amnt']
 ```
 
 - 转置
-
 ```
 df = df.T 
 df = df.transpose()
@@ -75,6 +73,7 @@ frame2.drop('east', axis=1)
 frame2.drop(['east','west'], axis=1)
 del frame2['east']
 ```
+
 - drop行
 ```
 df.dropna()
@@ -107,8 +106,8 @@ pd.value_counts(y_train)
 1     10910
 Name: label, dtype: int64
 ```
-- groupby
 
+- groupby
 ```
 f_10w.groupby(by = 'label')['id'].count()
 
@@ -120,8 +119,6 @@ label
 输出清晰，指定对'id'统计，不用对其他列操作。
 
 - Counter
-
-
 ```
 from collections import Counter
 Counter(y)
@@ -160,7 +157,6 @@ memory usage: 286.2+ MB
 ## dtypes 筛选col
 
 可能筛选出数值型特征和非数值型的特征分别处理：
-
 
 ```
 df.select_dtypes(include='object').columns
