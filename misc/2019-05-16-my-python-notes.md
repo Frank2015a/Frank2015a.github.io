@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Python|常用编程技术
-subtitle:   技术面
+subtitle:   通用
 date:       2018-06-05
 author:     马骋
 header-img: img/post-bg-coffee.jpeg
