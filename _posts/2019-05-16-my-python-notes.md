@@ -18,7 +18,7 @@ tags:
 
 - 在nb中正常写代码
 - 完成代码后, 调用命令转换成py文件
-```
+```r
 os.system('jupyter nbconvert --to script myutil.ipynb')
 ```
 
@@ -27,7 +27,7 @@ os.system('jupyter nbconvert --to script myutil.ipynb')
 - 设置sys路径
 `sys.path.append('/root/cma/machine_learning_practice/01_ml')`
 - 正常直接import即可，但由于自定义module需要经常修改，需要reload
-```
+```r
 from importlib import reload
 reload(myutil)
 ```
@@ -36,7 +36,7 @@ reload(myutil)
 
 定义函数的时候，按标准的方式定义Docstring：
 
-```
+```r
 def df_null_stat(df, thres_null=0.5):
     """
     args:
@@ -52,7 +52,7 @@ def df_null_stat(df, thres_null=0.5):
 
 调用help的方式与标准函数相同：
 
-```
+```r
 myutil.df_null_stat?
 Signature: myutil.df_null_stat(df, thres_null=0.5)
 Docstring:
@@ -68,4 +68,3 @@ df.drop(columns=col_drop, axis=1,inplace=True)
 File:      ~/cma/machine_learning_practice/01_ml/myutil.py
 Type:      function
 ```
-
