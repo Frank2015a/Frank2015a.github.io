@@ -1,15 +1,15 @@
 ---
 layout:     post
 title:      Python|常用编程技术
-subtitle:   通用
+subtitle:   datafame
 date:       2018-06-05
 author:     马骋
 header-img: img/post-bg-coffee.jpeg
 catalog: true
 tags:
+    - 数据挖掘 
     - python
 ---
-
 
 # 编程技术
 
