@@ -256,6 +256,107 @@ Original Memory Usage: 0.49 gb.
 New Memory Usage: 0.16 gb.
 
 
+# 总体信息
+
+要看到df数据的总体信息，可用`describe`和`info`函数，
+
+## describe
+
+describe函数，排除df中的nan后，给出特征列的统计信息：
+
+- 数值型：count/mean/std/min/max，以及分位值
+- 字符对象：unique/top/freq
+
+通过字符特征的unique统计，可以快速看出哪些特征分别适合什么形式的编码。
+
+**数值特征**
+
+直接调用describe，默认值统计数值型特征。直接统计的结果，col与原df一致，在特征数量很多的时候，并不方便查看，转置后更方便。
+
+```
+df_desc = df_train.describe().T
+df_desc.head()
+```
+
+输出：
+
+|          -       |   count |           mean |           std |    min |    25% |    50% |    75% |           max |
+|:-----------------|--------:|---------------:|--------------:|-------:|-------:|-------:|-------:|--------------:|
+| SK_ID_CURR       |  307511 | 278181         | 102790        | 100002 | 189146 | 278202 | 367142 | 456255        |
+| TARGET           |  307511 |      0.0807288 |      0.272419 |      0 |      0 |      0 |      0 |      1        |
+| CNT_CHILDREN     |  307511 |      0.417052  |      0.722121 |      0 |      0 |      0 |      1 |     19        |
+| AMT_INCOME_TOTAL |  307511 | 168798         | 237123        |  25650 | 112500 | 147150 | 202500 |      1.17e+08 |
+| AMT_CREDIT       |  307511 | 599026         | 402491        |  45000 | 270000 | 513531 | 808650 |      4.05e+06 |
+
+如果不需要25%和75%的数值，可以在percentile中设置：
+
+```
+df_desc = df_train.describe(percentiles=[0.5]).T
+df_desc['null_ratio'] = 1 - df_desc['count'] / df_train.shape[0]
+df_desc.sort_values(by = 'null_ratio', inplace=True)
+```
+
+|             -          |   count |             mean |            std |    min |    50% |    max |   null_ratio |
+|:-----------------------|--------:|-----------------:|---------------:|-------:|-------:|-------:|-------------:|
+| SK_ID_CURR             |  307511 | 278181           | 102790         | 100002 | 278202 | 456255 |            0 |
+| REG_CITY_NOT_WORK_CITY |  307511 |      0.230454    |      0.421124  |      0 |      0 |      1 |            0 |
+| FLAG_DOCUMENT_21       |  307511 |      0.000334947 |      0.0182985 |      0 |      0 |      1 |            0 |
+| FLAG_DOCUMENT_20       |  307511 |      0.000507299 |      0.0225176 |      0 |      0 |      1 |            0 |
+| FLAG_DOCUMENT_19       |  307511 |      0.000595101 |      0.0243875 |      0 |      0 |      1 |            0 |
+
+
+
+**字符特征**
+
+要统计字符特征，需显式指定类型：
+
+```
+df_desc_obj = df_train.describe(include=[np.object]).T
+# 统计频繁项的占比
+df_desc_obj['freq_ratio'] = df_desc_obj['freq'] / df_desc_obj['count']
+df_desc_obj.head(5)
+```
+
+统计结果可以得到unique数量，频繁项，以及频繁项的占比分布：
+
+|       -            |   count |   unique | top           |   freq |   freq_ratio |
+|:-------------------|--------:|---------:|:--------------|-------:|-------------:|
+| NAME_CONTRACT_TYPE |  307511 |        2 | Cash loans    | 278232 |     0.904787 |
+| CODE_GENDER        |  307511 |        3 | F             | 202448 |     0.658344 |
+| FLAG_OWN_CAR       |  307511 |        2 | N             | 202924 |     0.659892 |
+| FLAG_OWN_REALTY    |  307511 |        2 | Y             | 213312 |     0.693673 |
+| NAME_TYPE_SUITE    |  306219 |        7 | Unaccompanied | 248526 |     0.811596 |
+
+
+## info
+
+info给出df的summary信息：
+
+- 简洁版
+给出dtypes的统计。
+
+```
+df_train.info()
+
+RangeIndex: 307511 entries, 0 to 307510
+Columns: 122 entries, SK_ID_CURR to AMT_REQ_CREDIT_BUREAU_YEAR
+dtypes: float64(65), int64(41), object(16)
+memory usage: 286.2+ MB
+```
+
+- 详细版
+除了简洁版的信息，还可以给出各个特征的数据类型，null统计。
+
+```
+df_train.info(verbose=True,null_counts=True)
+# verbose summary
+SK_ID_CURR                      307511 non-null int64
+TARGET                          307511 non-null int64
+NAME_CONTRACT_TYPE              307511 non-null object
+CODE_GENDER                     307511 non-null object
+```
+
+
 # 其他
 
 ## 相关性分析

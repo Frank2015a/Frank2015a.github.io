@@ -69,6 +69,3 @@ File:      ~/cma/machine_learning_practice/01_ml/myutil.py
 Type:      function
 ```
 
-
-
-
