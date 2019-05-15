@@ -1,4 +1,3 @@
-
 ---
 layout:     post
 title:      [数据挖掘]Lending Club P2P业务风险策略分析
@@ -9,7 +8,6 @@ header-img: img/post-bg-coffee.jpeg
 catalog: true
 tags:
     - 数据挖掘 
-    - 消费金融
 ---
 
 
