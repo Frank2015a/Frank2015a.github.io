@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      数据挖掘|HomeCredit信贷数据EDA挖掘
+title:      数据挖掘|HomeCredit信贷风险分析
 subtitle:   客户群特征与违约风险分析
 date:       2018-06-05
 author:     马骋

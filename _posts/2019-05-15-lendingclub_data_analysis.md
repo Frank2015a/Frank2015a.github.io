@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      数据挖掘|Lending Club P2P业务风险策略分析
+title:      数据挖掘|Lending Club P2P风险策略分析
 subtitle:   信贷数据EDA+风险分析
 date:       2018-06-05
 author:     马骋
