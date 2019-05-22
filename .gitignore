@@ -38,4 +38,7 @@ _site
 */__pycache__
 .ipynb_checkpoints
 
+# misc personnal files
+
+misc/*
 
