@@ -7,7 +7,8 @@ author:     马骋
 header-img: img/post-bg-coffee.jpeg
 catalog: true
 tags:
-    - 数据挖掘 
+    - 数据挖掘
+    - 信贷风控
 ---
 
 ---
