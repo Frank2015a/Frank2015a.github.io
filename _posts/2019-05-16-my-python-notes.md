@@ -99,3 +99,28 @@ d = 40
 - 只能在单线程的模式下使用embed
 - 退出的时候Ctrl+C即可。
 
+## matplotlib中文显示
+
+linux 系统中python绘图中的中文显示往往有问题，显示成方块。 
+一个靠谱的解决办法是：https://blog.csdn.net/jeff_liu_sky_/article/details/54023745 
+
+- 下载中文字体
+http://fontzone.net/download/simhei 
+- 找到matplotlib的字体路径
+```
+locate -b '\mpl-data'
+```
+并将字体copy到fonts/ttf这个目录
+- 清除matplotlib的缓存路径，即重设
+- python中设置字体
+    - coding:utf-8 说明文件编码格式
+    - 用simhei 字体显示中文
+    - `mpl.rcParams['axes.unicode_minus'] = False` 这个用来正常显示负号
+```
+import matplotlib as  mpl
+from matplotlib  import pyplot as plt
+mpl.rcParams[u'font.sans-serif'] = ['simhei']
+mpl.rcParams['axes.unicode_minus'] = False
+```
+
+
