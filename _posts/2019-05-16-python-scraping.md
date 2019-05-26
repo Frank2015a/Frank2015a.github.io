@@ -58,6 +58,7 @@ export PATH=/opt/google/chrome:$PATH
 - python调用
 注意设置no-sandbox，以免报错。
 ```
+sys.path.append('../machine_learning_practice/01_ml/')
 options = webdriver.ChromeOptions() 
 options.add_argument('--headless') 
 options.add_argument('--no-sandbox')
